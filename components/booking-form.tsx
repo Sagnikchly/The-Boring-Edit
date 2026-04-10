@@ -92,11 +92,10 @@ export default function BookingForm() {
                 <div className="space-y-2">
                   <Label htmlFor="email">Email *</Label>
                   <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="your@email.com"
-                    required
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email
+  id="email"
+  name="email"
+  type="email"
+  placeholder="your@email.com"
+  required
+  value={formData.email}
+  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
