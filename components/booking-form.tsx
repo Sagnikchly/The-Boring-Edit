@@ -24,6 +24,35 @@ export default function BookingForm() {
     details: "",
   })
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    try {
+      const response = await fetch("https://formspree.io/f/mojpozye", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        alert("✅ Thank you! We will contact you within 24 hours.")
+
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          location: "",
+          details: "",
+        })
+      }
+    } catch (error) {
+      alert("❌ Error submitting form.")
+    }
+  }
+
   return (
     <section id="booking" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -44,6 +73,7 @@ export default function BookingForm() {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
 
+                {/* Name */}
                 <div className="space-y-2">
                   <Label htmlFor="name">Name *</Label>
                   <Input
@@ -58,6 +88,7 @@ export default function BookingForm() {
                   />
                 </div>
 
+                {/* Email */}
                 <div className="space-y-2">
                   <Label htmlFor="email">Email *</Label>
                   <Input
@@ -68,88 +99,4 @@ export default function BookingForm() {
                     required
                     value={formData.email}
                     onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number *</Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    placeholder="+91 98765 43210"
-                    required
-                    value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label>Service Category *</Label>
-                  <Select
-                    value={formData.service}
-                    onValueChange={(value) =>
-                      setFormData({ ...formData, service: value })
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a service" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="portrait">Portrait Photography</SelectItem>
-                      <SelectItem value="event">Event Coverage</SelectItem>
-                      <SelectItem value="lifestyle">Lifestyle Sessions</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <input type="hidden" name="service" value={formData.service || ""} />
-                </div>
-
-                <div className="space-y-2">
-                  <Label>Location Type *</Label>
-                  <Select
-                    value={formData.location}
-                    onValueChange={(value) =>
-                      setFormData({ ...formData, location: value })
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select location" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="kolkata">Within Kolkata</SelectItem>
-                      <SelectItem value="outside">Outside Kolkata</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <input type="hidden" name="location" value={formData.location || ""} />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="details">Additional Details</Label>
-                  <Textarea
-                    id="details"
-                    name="details"
-                    placeholder="Tell us more about your project..."
-                    rows={4}
-                    value={formData.details}
-                    onChange={(e) =>
-                      setFormData({ ...formData, details: e.target.value })
-                    }
-                  />
-                </div>
-
-                <Button type="submit" className="w-full" size="lg">
-                  Book Now
-                </Button>
-
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </section>
-  )
-}
+                      setFormData({ ...formData, email
