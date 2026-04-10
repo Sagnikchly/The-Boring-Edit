@@ -42,7 +42,7 @@ export default function BookingForm() {
             </CardHeader>
 
             <CardContent>
-              <form action="https://formspree.io/f/mojpozye" method="POST" className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
 
                 <div className="space-y-2">
                   <Label htmlFor="name">Name *</Label>
