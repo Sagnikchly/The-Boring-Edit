@@ -117,6 +117,41 @@ export default function BookingForm() {
                     }
                   />
                 </div>
+                {/* Service */}
+<div className="space-y-2">
+  <Label>Service *</Label>
+  <Select
+    onValueChange={(value) =>
+      setFormData({ ...formData, service: value })
+    }
+  >
+    <SelectTrigger>
+      <SelectValue placeholder="Select a service" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="Portrait">Portrait</SelectItem>
+      <SelectItem value="Event Coverage">Event Coverage</SelectItem>
+      <SelectItem value="Lifestyle Sessions">Lifestyle Sessions</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
+                {/* Location */}
+<div className="space-y-2">
+  <Label>Location *</Label>
+  <Select
+    onValueChange={(value) =>
+      setFormData({ ...formData, location: value })
+    }
+  >
+    <SelectTrigger>
+      <SelectValue placeholder="Select location" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="Within Kolkata">Within Kolkata</SelectItem>
+      <SelectItem value="Outside Kolkata">Outside Kolkata</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
 
                 {/* Details */}
                 <div className="space-y-2">
