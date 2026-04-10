@@ -92,10 +92,55 @@ export default function BookingForm() {
                 <div className="space-y-2">
                   <Label htmlFor="email">Email *</Label>
                   <Input
-  id="email"
-  name="email"
-  type="email"
-  placeholder="your@email.com"
-  required
-  value={formData.email}
-  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    required
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                  />
+                </div>
+
+                {/* Phone */}
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    placeholder="Your phone number"
+                    value={formData.phone}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone: e.target.value })
+                    }
+                  />
+                </div>
+
+                {/* Details */}
+                <div className="space-y-2">
+                  <Label htmlFor="details">Details</Label>
+                  <Textarea
+                    id="details"
+                    name="details"
+                    placeholder="Tell us about your project"
+                    value={formData.details}
+                    onChange={(e) =>
+                      setFormData({ ...formData, details: e.target.value })
+                    }
+                  />
+                </div>
+
+                <Button type="submit" className="w-full">
+                  Submit
+                </Button>
+
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </section>
+  )
+}
